@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+<div ng-app="App">
+
+    <div ng-controller="UserController">
+        <H3>{{sta}}</H3>
+
+        <div ng-show="start">
+            <!-- Table for show count of file -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Less 10mb
+                        </th>
+                        <th>
+                            10mb-50mb
+                        </th>
+                        <th>More 100mb</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {{small}}
+                        </td>
+                        <td>
+                            {{normal}}
+                        </td>
+                        <td>
+                            {{big}}
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <!-- For go back -->
+            <a href="" ng-click="Back()"><H1>...</H1></a>
+        </div>
+
+        
+        <!-- Show folder and file -->
+        <div ng-repeat="inf in infos">
+            <!-- folder have href --> 
+            <a ng-if="inf.Size=='p'" href="" ng-click="Go(inf.Name)"> {{inf.Name}}</a>
+           
+           <label ng-if="inf.Size!='p'">{{inf.Name}}</label>  
+        </div>
+    </div>
+</div>
+
+
+<script src="/Scripts/angular.min.js"></script>
+<script src="/Scripts/App/InfoFile.js"></script>
